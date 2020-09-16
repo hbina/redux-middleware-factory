@@ -1,5 +1,4 @@
-import thunkMiddleware from 'redux-thunk'
-import { AnyAction, applyMiddleware, createStore, ThunkDispatch } from '@reduxjs/toolkit'
+import { AnyAction, applyMiddleware, createStore } from '@reduxjs/toolkit'
 
 import { reduxMiddlewareFactory } from '../src/redux-middleware-factory'
 
@@ -35,7 +34,7 @@ export const reducer = (state = defaultState, action: TestAction) => {
   }
 }
 
-const mappingMiddleware = reduxMiddlewareFactory<TestState, AnyAction>((_store, next, action) => {
+const mappingMiddleware = reduxMiddlewareFactory<TestState, any>((_store, next, action) => {
   if (action.type === ActionType.SET_ONE) {
     return next({ type: ActionType.SET_THREE })
   } else {
@@ -44,7 +43,7 @@ const mappingMiddleware = reduxMiddlewareFactory<TestState, AnyAction>((_store, 
 })
 
 describe('Maps an action of certain type to another type of action.', () => {
-  const store = createStore(reducer, applyMiddleware(mappingMiddleware, thunkMiddleware))
+  const store = createStore(reducer, applyMiddleware(mappingMiddleware))
 
   it('Signature must match what redux expects', () => {
     store.dispatch({ type: ActionType.SET_TWO })
