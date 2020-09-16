@@ -1,8 +1,14 @@
 {
   "name": "redux-middleware-factory",
-  "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "version": "0.1.0",
+  "description": "A helper library to create redux middlewares.",
+  "keywords": [
+    "redux",
+    "middleware",
+    "factory",
+    "library",
+    "typescript"
+  ],
   "main": "dist/redux-middleware-factory.umd.js",
   "module": "dist/redux-middleware-factory.es5.js",
   "typings": "dist/types/redux-middleware-factory.d.ts",
